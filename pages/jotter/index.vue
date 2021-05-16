@@ -40,15 +40,37 @@
             </el-card>
           </div>
         </div>
-        <el-pagination
+        <!--<el-pagination
           style="margin-top: 20px;margin-right: 100px"
           background
           layout=" prev, pager, next"
           @current-change="handleCurrentChange"
           :current-page.sync="currentPage"
-          :page-size="pageSize"
+          :page-size="10"
           :total="total">
-        </el-pagination>
+        </el-pagination>-->
+
+        66666
+        <div>
+
+        </div>
+        <div class="pagination" >
+          <div class="page-list">
+            <nuxt-link
+              :class="{
+              page: true,
+              current: pageNo == 1
+            }"
+              v-for="pageNo in totalPage"
+              :key="pageNo"
+              :to="`jotter?page=${pageNo}`">
+              {{ pageNo }}
+            </nuxt-link>
+           <!-- <nuxt-link :to="'jotter?page=1'">{{ 1 }}</nuxt-link>
+            <nuxt-link :to="'jotter?page=2'">{{ 2 }}</nuxt-link>-->
+          </div>
+        </div>
+
       </el-col><!--style="width: 900px"-->
       <el-col :xs="1" :sm="1" :md="1" :lg="6" v-show="rightShow"><!-- style="width: 280px"-->
         <article-right></article-right>
@@ -60,78 +82,96 @@
 </template>
 
 <script>
-    import ArticleRight from '../../components/Article/ArticleRight'
+  import ArticleRight from '../../components/Article/ArticleRight'
 
-    export default {
-        name: 'Articles',
-        components: {ArticleRight},
-        async asyncData({$axios}){
-            //服务端渲染
-            let articles = await $axios('/article/p/7/1');
-            return{
-                articles: articles.data.items,
-                total: articles.data.total
-            }
-        },
-        data() {
-            return {
-                // articles: [],
-                pageSize: 7,
-                // total: 0,
-                keywords: '',
-                currentPage: 1,
-                rightShow: true,
-                cardChange: false,
-                screenWidth: 0,
-
-            }
-        },
-        created() {
-            // this.currentPage = window.sessionStorage.getItem('page') == null ? 1 : JSON.parse(window.sessionStorage.getItem('page' || '[]'))
-        },
-        mounted() {
-            this.currentPage = window.sessionStorage.getItem('page') == null ? 1 : JSON.parse(window.sessionStorage.getItem('page' || '[]'))
-            //可用于设置自适应屏幕，根据获得的可视宽度（兼容性）判断是否显示
-            let w = document.documentElement.offsetWidth || document.body.offsetWidth;
-            if (w < 1050) {
-                //侧边栏不显示
-                this.rightShow = false;
-            }
-            if (w < 800) {
-                this.barShow = true;
-            }
-            //根据屏幕改变el-row大小
-            if (w > 1200) {
-                this.screenWidth = 1200;
-            } else {
-                this.screenWidth = w;
-            }
-        },
-        methods: {
-            getWidth() {
-                return {width: this.screenWidth + 'px'}
-            },
-            handleCurrentChange(page) {
-                // this.$router.push({path:'/',params:{pageNo:e}})
-                var _this = this
-                //document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0
-                window.sessionStorage.setItem('page', page)
-                _this.$axios.get('/article/' + this.pageSize + '/' + page).then(resp => {
-                    if (resp && resp.status === 200) {
-                        _this.articles = resp.data.items
-                        _this.total = resp.data.total
-                    }
-                })
-            },
-            getContent(articleContentMd) {
-                return articleContentMd.replace(/<\/?.+?>/g, '').replace(/ /g, '')
-            },
-            asyncData() {
-
-            }
+  export default {
+    name: 'Articles',
+    components: {ArticleRight},
+    watchQuery: true,
+    async asyncData({$axios, redirect,route}) {
+      //服务端渲染
+      let pid = route.query.page==undefined? '1':route.query.page;
+      console.log(pid)
+      let [articles] = await Promise.all([
+        await $axios.get('/page?pid='+pid).then(res => {
+          return res
+        }).catch(err => {
+        })
+      ])
+      if (articles != undefined && articles != []) {
+        return {
+          articles: articles.data.items,
+          total: articles.data.total
         }
+      } else {
+        return {
+          articles: [],
+          total: 0
+        }
+      }
+
+    },
+    data() {
+      return {
+        pageSize: 7,
+        keywords: '',
+        currentPage: 1,
+        rightShow: true,
+        cardChange: false,
+        screenWidth: 0,
+      }
+    },
+    created() {
+      // this.currentPage = window.sessionStorage.getItem('page') == null ? 1 : JSON.parse(window.sessionStorage.getItem('page' || '[]'))
+    },
+    mounted() {
+      this.currentPage = window.sessionStorage.getItem('page') == null ? 1 : JSON.parse(window.sessionStorage.getItem('page' || '[]'))
+      //可用于设置自适应屏幕，根据获得的可视宽度（兼容性）判断是否显示
+      let w = document.documentElement.offsetWidth || document.body.offsetWidth;
+      if (w < 1050) {
+        //侧边栏不显示
+        this.rightShow = false;
+      }
+      if (w < 800) {
+        this.barShow = true;
+      }
+      //根据屏幕改变el-row大小
+      if (w > 1200) {
+        this.screenWidth = 1200;
+      } else {
+        this.screenWidth = w;
+      }
+    },
+    methods: {
+      getWidth() {
+        return {width: this.screenWidth + 'px'}
+      },
+      handleCurrentChange(page) {
+        // this.$router.push({path:'/',params:{pageNo:e}})
+        var _this = this
+        //document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0
+        window.sessionStorage.setItem('page', page)
+        _this.$axios.get('/article/' + this.pageSize + '/' + page).then(resp => {
+          if (resp && resp.status === 200) {
+            _this.articles = resp.data.items
+            _this.total = resp.data.total
+          }
+        })
+      },
+      getContent(articleContentMd) {
+        return articleContentMd.replace(/<\/?.+?>/g, '').replace(/ /g, '')
+      },
+      asyncData() {
+
+      }
+    },
+    computed:{
+      totalPage () {
+        return Math.ceil(this.total / 9)
+      },
     }
+  }
 </script>
 
 <style type="text/css">
@@ -320,6 +360,34 @@
     margin: 0;
     padding: 6px 0;
   }
+
+  .pagination{
+    text-align: center
+  }
+
+  .page-list{
+    display: inline-block;
+    text-align: left
+  }
+  .page{
+    display: inline-block;
+    width: 36px;
+    line-height: 36px;
+    text-align: center;
+    background-color: #fff;
+    margin: 8px;
+    color: #333;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  .page:hover{
+    background: #ddd;
+  }
+  .page:current{
+    background: #fff;
+    color: rgb(64,158,255);
+  }
+
 </style>
 
 
