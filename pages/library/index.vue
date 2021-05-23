@@ -5,7 +5,43 @@
       <SideMenu @indexSelect="listByCategory" ref="sideMenu"></SideMenu>
     </el-aside>
     <el-main>
-      <books class="books-area" ref="booksArea"></books>
+      <el-row style="height: 840px;" class="books-area">
+        <el-col>
+          <search-bar @onSearch="searchResult" ref="searchBar"></search-bar>
+        </el-col>
+        <el-col><!--.slice((currentPage-1)*pagesize,currentPage*pagesize)-->
+          <el-tooltip effect="dark" placement="right" v-for="item in books.slice((currentPage-1)*pagesize,currentPage*pagesize)" :key="item.id">
+            <p slot="content" style="font-size: 14px;margin-bottom: 6px;">{{item.title}}</p>
+            <p slot="content" style="font-size: 13px;margin-bottom: 6px">
+              <span>{{item.author}}</span> /
+              <span>{{item.date}}</span> /
+              <span>{{item.press}}</span>
+            </p>
+            <p slot="content" style="width: 300px" class="abstract">{{item.abs}}</p>
+            <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
+                     bodyStyle="padding:10px" shadow="hover" >
+              <div class="cover">
+                <img :src="item.cover" alt="封面">
+              </div>
+              <div class="info">
+                <div class="title">
+                  <a href="">{{item.title}}</a>
+                </div>
+              </div>
+              <div class="author">{{item.author}}</div>
+            </el-card>
+
+          </el-tooltip>
+        </el-col>
+        <el-pagination
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-size="pagesize"
+          :total="books.length">
+        </el-pagination>
+      </el-row>
+
+
 
     </el-main>
   </el-container>
@@ -13,11 +49,40 @@
 
 <script>
   import SideMenu from './SideMenu'
-  import Books from './Books'
-
+  import SearchBar from './SearchBar'
   export default {
     name: 'AppLibrary',
-    components: {Books, SideMenu},
+    components: {SearchBar, SideMenu},
+    layout:'blog',
+    watchQuery: true,
+    async asyncData({$axios, redirect,route}) {
+      console.log("发出了吗");
+      //服务端渲染
+      // let pid = route.query.page==undefined? '1':route.query.page;
+      // console.log(pid)
+      let [booksData] = await Promise.all([
+        await $axios.get('/books').then(res => {
+
+          return res
+        }).catch(err => {
+        })
+      ])
+      if (booksData != undefined && booksData != []) {
+        return {
+          books: booksData.data,
+        }
+      } else {
+        return {
+          books: [],
+        }
+      }
+    },
+    data(){
+      return {
+        currentPage: 1,
+        pagesize: 17
+      }
+    },
     methods: {
       listByCategory () {
         let _this = this
@@ -27,6 +92,19 @@
           if (resp && resp.status === 200) {
             _this.$refs.booksArea.currentPage=1
             _this.$refs.booksArea.books = resp.data
+          }
+        })
+      },
+      handleCurrentChange: function (currentPage) {
+        document.documentElement.scrollTop = 0;
+        this.currentPage = currentPage
+      },
+      searchResult () {
+        var _this = this
+        this.$axios.get('/search?keywords=' + this.$refs.searchBar.keywords, {
+        }).then(resp => {
+          if (resp && resp.status === 200) {
+            _this.books = resp.data
           }
         })
       }
@@ -39,6 +117,59 @@
     width: 990px;
     margin-left: auto;
     margin-right: auto;
+  }
+  .cover {
+    width: 115px;
+    height: 172px;
+    margin-bottom: 7px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  img {
+    width: 115px;
+    height: 172px;
+    /*margin: 0 auto;*/
+  }
+  .title {
+    font-size: 14px;
+    text-align: left;
+  }
+  .author {
+    color: #333;
+    width: 102px;
+    font-size: 13px;
+    margin-bottom: 6px;
+    text-align: left;
+  }
+  .abstract {
+    display: block;
+    line-height: 17px;
+  }
+  .el-icon-delete {
+    cursor: pointer;
+    float: right;
+  }
+  .switch {
+    display: flex;
+    position: absolute;
+    left: 780px;
+    top: 25px;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:link, a:visited, a:focus {
+    color: #3377aa;
+  }
+  .el-card{
+    transition: all 0.3s;
+  }
+  .el-card:hover{
+    transform: scale(1.1);
+  }
+  .el-card{
+    margin-bottom: 20px;
+    background-color: rgba(255,255,255,.8)
   }
 </style>
 

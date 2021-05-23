@@ -11,6 +11,7 @@
         :size="size">
         <span>我来啦!</span>
       </el-drawer>
+
       <router-link :to="{path:'/'}" class="a-link nuxt-link-active">
         <img src="~static/img/surface.png" width="170" height="50" alt="">
       </router-link>

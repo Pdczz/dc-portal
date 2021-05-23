@@ -55,7 +55,8 @@
 
 <script>
   export default {
-    name: 'BannerManagement'
+    name: 'BannerManagement',
+    layout: 'custom_layout'
   }
 </script>
 

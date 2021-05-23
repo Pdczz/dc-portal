@@ -82,6 +82,7 @@
 <script>
   export default {
     name: 'ArticleManagement',
+    layout: 'custom_layout',
     data () {
       return {
         articles: [],
@@ -94,7 +95,7 @@
     },
     computed: {
       tableHeight () {
-        return window.innerHeight - 320
+        /*return window.innerHeight - 320*/
       }
     },
     methods: {
@@ -119,8 +120,8 @@
       viewArticle (id) {
         let articleUrl = this.$router.resolve(
           {
-            path: '../../jotter/article',
-            query: {
+            path: '../../jotter/',
+            params: {
               id: id
             }
           }
@@ -128,9 +129,10 @@
         window.open(articleUrl.href, '_blank')
       },
       editArticle (article) {
+
         this.$router.push(
           {
-            name: 'Editor',
+            name: 'admin-content-editor',
             params: {
               article: article
             }

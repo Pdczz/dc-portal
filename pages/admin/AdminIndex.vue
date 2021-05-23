@@ -1,20 +1,23 @@
 <template>
-  <div></div>
-  <!--<el-container id="admin-body">
-    <el-header style="z-index: 1;height: 80px;margin-left: -20px">
-      <Header style="position: absolute;width: 100%; height: 80px"></Header>
-    </el-header>
-    &lt;!&ndash;<el-row style="height: 100%;">&ndash;&gt;
-    <el-container>
-      <el-aside style="height: 150%;margin-top: -80px;width: 230px">
-        <admin-menu></admin-menu>
-      </el-aside>
-      <el-main>
-        <router-view/>
-&lt;!&ndash;        <nuxt/>&ndash;&gt;
-      </el-main>
+  <div>
+    <el-container id="admin-body">
+      <el-header style="z-index: 1;height: 80px;margin-left: -20px">
+        <Header style="position: absolute;width: 100%; height: 80px"></Header>
+      </el-header>
+      <!--<el-row style="height: 100%;">-->
+      <el-container>
+        <el-aside style="height: 150%;margin-top: -80px;width: 230px">
+          <admin-menu></admin-menu>
+        </el-aside>
+        <el-main>
+          <!--        <router-view/>-->
+          <nuxt/>
+          <!--        <nuxt/>-->
+        </el-main>
+      </el-container>
     </el-container>
-  </el-container>-->
+  </div>
+
 </template>
 
 <script>
@@ -25,7 +28,7 @@
 
         name: 'AdminIndex',
         components: {AdminMenu, Header},
-        layout:'custom_layout',
+
         data() {
             return {
                 dialogVisible: false

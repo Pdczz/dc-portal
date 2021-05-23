@@ -13,5 +13,4 @@ export const mutations ={
   setId(admin,playload){
     admin.jid = playload
   },
-
 }

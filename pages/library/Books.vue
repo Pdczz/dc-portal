@@ -1,13 +1,10 @@
 <template>
-  <div>
     <el-row style="height: 840px;">
       <el-col>
         <search-bar @onSearch="searchResult" ref="searchBar"></search-bar>
       </el-col>
-      <el-col>
-        <el-tooltip effect="dark" placement="right"
-                    v-for="item in books.slice((currentPage-1)*pagesize,currentPage*pagesize)"
-                    :key="item.id">
+      <el-col><!--.slice((currentPage-1)*pagesize,currentPage*pagesize)-->
+        <el-tooltip effect="dark" placement="right" v-for="item in books" :key="item.id">
           <p slot="content" style="font-size: 14px;margin-bottom: 6px;">{{item.title}}</p>
           <p slot="content" style="font-size: 13px;margin-bottom: 6px">
             <span>{{item.author}}</span> /
@@ -17,14 +14,13 @@
           <p slot="content" style="width: 300px" class="abstract">{{item.abs}}</p>
           <el-card style="width: 135px;margin-bottom: 20px;height: 233px;float: left;margin-right: 15px" class="book"
                    bodyStyle="padding:10px" shadow="hover" >
-            <div class="cover"><!-- @click="editBook(item)"-->
+            <div class="cover">
               <img :src="item.cover" alt="封面">
             </div>
             <div class="info">
               <div class="title">
                 <a href="">{{item.title}}</a>
               </div>
-              <!--<i class="el-icon-delete" @click="deleteBook(item.id)"></i>-->
             </div>
             <div class="author">{{item.author}}</div>
           </el-card>
@@ -32,15 +28,15 @@
         </el-tooltip>
       </el-col>
     </el-row>
-    <el-row>
+    <!--<el-row>
       <el-pagination
         @current-change="handleCurrentChange"
         :current-page="currentPage"
         :page-size="pagesize"
         :total="books.length">
       </el-pagination>
-    </el-row>
-  </div>
+    </el-row>-->
+
 </template>
 
 <script>
@@ -49,6 +45,30 @@
   export default {
     name: 'Books',
     components: {SearchBar},
+    watchQuery: true,
+    async asyncData({$axios, redirect,route}) {
+      console.log("发出了吗");
+      //服务端渲染
+      // let pid = route.query.page==undefined? '1':route.query.page;
+      // console.log(pid)
+      let [booksData] = await Promise.all([
+        await $axios.get('/books').then(res => {
+          return res
+        }).catch(err => {
+        })
+      ])
+      console.log("books"+booksData);
+      if (booksData != undefined && booksData != []) {
+
+        return {
+          books: booksData,
+        }
+      } else {
+        return {
+          books: [],
+        }
+      }
+    },
     data () {
       return {
         books: [],
@@ -57,25 +77,24 @@
       }
     },
     mounted: function () {
-      this.loadBooks()
+      /*this.loadBooks()*/
     },
     methods: {
-      loadBooks () {
+      /*loadBooks () {
         var _this = this
         this.$axios.get('/books').then(resp => {
           if (resp && resp.status === 200) {
             _this.books = resp.data
           }
         })
-      },
+      },*/
       handleCurrentChange: function (currentPage) {
         document.documentElement.scrollTop = 0;
         this.currentPage = currentPage
       },
       searchResult () {
         var _this = this
-        this.$axios
-          .get('/search?keywords=' + this.$refs.searchBar.keywords, {
+        this.$axios.get('/search?keywords=' + this.$refs.searchBar.keywords, {
           }).then(resp => {
           if (resp && resp.status === 200) {
             _this.books = resp.data

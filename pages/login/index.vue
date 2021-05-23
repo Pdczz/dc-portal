@@ -24,7 +24,7 @@
 
     export default {
         name: 'index',
-        layout:'login',
+
         data() {
             return {
                 loginForm: {

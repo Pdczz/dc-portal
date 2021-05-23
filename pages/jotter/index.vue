@@ -1,7 +1,7 @@
 <template>
 
-  <el-container :style="getWidth()" style="margin: 0 auto">
-    <el-row :style="getWidth()" style="margin: 0 auto">
+  <el-container  style="margin: 0 auto;width: 1200px"><!--:style="getWidth()"-->
+    <el-row  style="margin: 0 auto;width: 1200px"><!--:style="getWidth()"-->
       <el-col :xs="24" :sm="24" :md="24" :lg="18">
       </el-col>
       <el-col :xs="24" :sm="24" :md="24" :lg="18">
@@ -36,49 +36,22 @@
                   </div>
                 </el-col>
               </el-row>
-
             </el-card>
           </div>
         </div>
-        <!--<el-pagination
-          style="margin-top: 20px;margin-right: 100px"
-          background
-          layout=" prev, pager, next"
-          @current-change="handleCurrentChange"
-          :current-page.sync="currentPage"
-          :page-size="10"
-          :total="total">
-        </el-pagination>-->
-
-        66666
-        <div>
-
-        </div>
         <div class="pagination" >
           <div class="page-list">
-            <nuxt-link
-              :class="{
-              page: true,
-              current: pageNo == 1
-            }"
-              v-for="pageNo in totalPage"
-              :key="pageNo"
-              :to="`jotter?page=${pageNo}`">
+            <nuxt-link :class="{page: true,current: pageNo == 1}" v-for="pageNo in totalPage" :key="pageNo" :to="`jotter?page=${pageNo}`">
               {{ pageNo }}
             </nuxt-link>
-           <!-- <nuxt-link :to="'jotter?page=1'">{{ 1 }}</nuxt-link>
-            <nuxt-link :to="'jotter?page=2'">{{ 2 }}</nuxt-link>-->
           </div>
         </div>
-
-      </el-col><!--style="width: 900px"-->
+      </el-col>
       <el-col :xs="1" :sm="1" :md="1" :lg="6" v-show="rightShow"><!-- style="width: 280px"-->
         <article-right></article-right>
       </el-col>
     </el-row>
-
   </el-container>
-
 </template>
 
 <script>
@@ -87,6 +60,7 @@
   export default {
     name: 'Articles',
     components: {ArticleRight},
+    layout:'blog',
     watchQuery: true,
     async asyncData({$axios, redirect,route}) {
       //服务端渲染
@@ -96,6 +70,7 @@
         await $axios.get('/page?pid='+pid).then(res => {
           return res
         }).catch(err => {
+
         })
       ])
       if (articles != undefined && articles != []) {
@@ -109,7 +84,6 @@
           total: 0
         }
       }
-
     },
     data() {
       return {
@@ -148,7 +122,7 @@
       },
       handleCurrentChange(page) {
         // this.$router.push({path:'/',params:{pageNo:e}})
-        var _this = this
+        /*var _this = this
         //document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0
         window.sessionStorage.setItem('page', page)
@@ -157,7 +131,8 @@
             _this.articles = resp.data.items
             _this.total = resp.data.total
           }
-        })
+        })*/
+        this.$router.push({path:'/jotter',query:{page:page}})
       },
       getContent(articleContentMd) {
         return articleContentMd.replace(/<\/?.+?>/g, '').replace(/ /g, '')

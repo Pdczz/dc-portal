@@ -9,14 +9,6 @@
     active-text-color="#ffd04b"
     :collapse="isCollapse">
     <div style="height: 80px;"></div>
-
-    <!-- <img src="../../assets/profile.jpg" style="width: 100%;height: auto;max-width: 45px;margin-top: 30px;" class="img-circle" alt="User Image">-->
-
-    <!--<a style="color: #90ecff;margin-left: 25px">{{name}}</a><br><br>
-    <a href="#" style="margin-left: 100px;color: darkgrey"><i class="fa fa-circle text-success" ></i> 在线</a>
-    <a href="#" v-on:click="logout" style="padding-left:10px; color: darkgrey"><i class="fa fa-sign-out text-danger"></i> 注销</a>-->
-
-
     <!--index 没有用但是必需字段-->
     <el-submenu v-for="(item,i) in menuList" :key="i" :index="(i).toString()" style="text-align: left">
         <span slot="title" style="font-size: 15px;">
@@ -32,7 +24,7 @@
 </template>
 
 <script>
-    import store from 'vuex'
+
 
     export default {
         name: 'AdminMenu',
