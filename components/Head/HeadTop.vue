@@ -12,9 +12,9 @@
         <span>我来啦!</span>
       </el-drawer>
 
-      <router-link :to="{path:'/'}" class="a-link nuxt-link-active">
+      <nuxt-link :to="{path:'/'}" class="a-link nuxt-link-active">
         <img src="~static/img/surface.png" width="170" height="50" alt="">
-      </router-link>
+      </nuxt-link>
       <a>
         <img src="~static/img/search.png" alt="" style="width: 4.933vw;height: 4.933vw;margin: 15px 10px 10px">
       </a>
@@ -27,29 +27,29 @@
                 style="background-color:#1C1E20;">
               <li role="menuitem" @click="activeIndex=0" :class="{active:activeIndex==0}" class="el-menu-item"
                   style="color: rgb(255, 255, 255);background-color: rgb(28, 30, 32);">
-                <router-link :to="{path:'/'}" class="a-link nuxt-link-active">
+                <nuxt-link :to="{path:'/'}" class="a-link nuxt-link-active">
                   <img src="~static/img/surface.png" width="170" height="50" alt="">
-                </router-link>
+                </nuxt-link>
               </li>
               <li role="menuitem" @click="activeIndex=1" :class="{active:activeIndex==1}" class="el-menu-item"
                   style="color: rgb(255, 255, 255);background-color: rgb(28, 30, 32);">
                 <!--              <a href="/index" class="a-link">网站首页</a>-->
-                <router-link class="article-link a-link" :to="{path:'/home'}">网站首页</router-link>
+                <nuxt-link class="article-link a-link" :to="{path:'/home'}">网站首页</nuxt-link>
               </li>
               <li role="menuitem" @click="activeIndex=2" :class="{active:activeIndex==2}" class="el-menu-item"
                   style="color: rgb(255, 255, 255);background-color: rgb(28, 30, 32);">
                 <!--              <a href="/jotter" class="a-link">热门文章</a>-->
-                <router-link class="article-link a-link" :to="{name:'jotter'}">热门文章</router-link>
+                <nuxt-link class="article-link a-link" :to="{name:'jotter'}">热门文章</nuxt-link>
               </li>
               <li role="menuitem" @click="activeIndex=3" :class="{active:activeIndex==3}" class="el-menu-item"
                   style="color: rgb(255, 255, 255);background-color: rgb(28, 30, 32);">
                 <!--              <a href="/library" class="a-link nuxt-link-exact-active nuxt-link-active" aria-current="page">书籍名著</a>-->
-                <router-link class="article-link a-link" :to="{path:'/library'}">书籍名著</router-link>
+                <nuxt-link class="article-link a-link" :to="{path:'/library'}">书籍名著</nuxt-link>
               </li>
               <li role="menuitem" @click="activeIndex=4" :class="{active:activeIndex==4}" class="el-menu-item"
                   style="color: rgb(255, 255, 255); background-color: rgb(28, 30, 32);">
                 <!--              <a href="/history" class="a-link">网站导航</a>-->
-                <router-link class="article-link a-link" :to="{path:'/history'}">网站导航</router-link>
+                <nuxt-link class="article-link a-link" :to="{path:'/history'}">网站导航</nuxt-link>
               </li>
 
               <li id="search" class="el-menu-item" style="float:right;padding-right:200px;" tabindex="0">

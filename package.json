@@ -20,7 +20,7 @@
     "mavon-editor": "^2.6.17",
     "nuxt": "^2.15.3",
     "video.js": "^7.11.8",
-    "vue": "latest",
+    "vue": "2.6.12",
     "webpack": "^4.46.0"
   },
   "devDependencies": {

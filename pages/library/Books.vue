@@ -47,7 +47,7 @@
     components: {SearchBar},
     watchQuery: true,
     async asyncData({$axios, redirect,route}) {
-      console.log("发出了吗");
+
       //服务端渲染
       // let pid = route.query.page==undefined? '1':route.query.page;
       // console.log(pid)
