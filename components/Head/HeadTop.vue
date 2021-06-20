@@ -120,13 +120,11 @@
   </div>
 </template>
 <script>
-
 </script>
 <style scoped>
   @import "../../assets/css/index.css";
   .active {
     color: rgb(250, 150, 0);
-
     border-bottom-color: rgb(250, 150, 0);
   }
   .noneshow{
@@ -141,51 +139,49 @@
   }
 </style>
 <script>
-    import NavMenu from '../common/NavMenu'
-
-    export default {
-        name: 'HeadTop',
-        components: {NavMenu},
-        data () {
-            return {
-                activeIndex: 2,
-                noneshow: true,
-                inputshow: false,
-                drawer: false,
-                direction: 'rtl',
-                barShow: false,
-                screenWidth: 0, //屏幕宽度等于容器宽度
-                size:'50%',//手机端侧边栏宽度
-            }
-        },
-        mounted () {
-            let w = document.documentElement.offsetWidth || document.body.offsetWidth;
-            if (w < 800){
-                this.barShow = true;
-            }
-            //根据屏幕改变el-row大小
-            if (w > 1200){
-                this.screenWidth=1200;
-            }else {
-                this.screenWidth=w;
-            }
-        },
-        methods:{
-            //移除搜索框的float属性
-            removeAttr(){
-                return {float:''};
-            }
-            ,
-            getWidth(){
-                return {width:this.screenWidth+'px',backgroundColor:'#1C1E20'};
-            }
-        }
+  import NavMenu from '../common/NavMenu'
+  export default {
+    name: 'HeadTop',
+    components: {NavMenu},
+    data () {
+      return {
+        activeIndex: 2,
+        noneshow: true,
+        inputshow: false,
+        drawer: false,
+        direction: 'rtl',
+        barShow: false,
+        screenWidth: 0, //屏幕宽度等于容器宽度
+        size:'50%',//手机端侧边栏宽度
+      }
+    },
+    mounted () {
+      let w = document.documentElement.offsetWidth || document.body.offsetWidth;
+      if (w < 800){
+        this.barShow = true;
+      }
+      //根据屏幕改变el-row大小
+      if (w > 1200){
+        this.screenWidth=1200;
+      }else {
+        this.screenWidth=w;
+      }
+    },
+    methods:{
+      //移除搜索框的float属性
+      removeAttr(){
+        return {float:''};
+      }
+      ,
+      getWidth(){
+        return {width:this.screenWidth+'px',backgroundColor:'#1C1E20'};
+      }
     }
+  }
 </script>
 
 <style scoped>
   @import "../../assets/css/doc.css";
-
   #bg {
     /* background-image: url(../assets/katongjianpan.png);*/
     /*background-color: #c0ccda;*/
@@ -202,28 +198,23 @@
     width: 100%;
     z-index: -1;
   }
-
   a {
     text-decoration: none;
   }
-
   #header h1 {
     font-weight: normal;
     font-size: 2.5em;
     line-height: 2;
   }
-
   #header a {
     color: black;
     font-family: "微软雅黑";
   }
-
   body {
     color: #fff;
     font-size: 14px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   }
-
   .header .nav-item a .router-link-active:after {
     content: "";
     display: inline-block;
@@ -234,18 +225,15 @@
     height: 2px;
     background: #409eff;
   }
-
   .el-header[data-v-8dc7cce2] {
     background-color: #1C1E20;
     color: #333;
     line-height: 60px;
   }
-
   .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
   }
-
   .search-hot {
     position: absolute;
     z-index: 9999;
@@ -259,6 +247,3 @@
     border-radius: 4px;
   }
 </style>
-
-
-
