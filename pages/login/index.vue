@@ -81,14 +81,14 @@
     color: #505458;
   }
 
-  #poster {
+  /*#poster {
     background: url("~static/img/login.jpg") no-repeat;
     background-position: center;
     height: 100%;
     width: 100%;
     background-size: cover;
     position: fixed;
-  }
+  }*/
 
   body {
     margin: 0px;

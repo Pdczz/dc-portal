@@ -1,7 +1,7 @@
 <template>
 
-  <el-container  style="margin: 0 auto;width: 1200px"><!--:style="getWidth()"-->
-    <el-row  style="margin: 0 auto;width: 1200px"><!--:style="getWidth()"-->
+  <el-container  style="margin: 0 auto;" :style="getWidth()"><!--:style="getWidth()"-->
+    <el-row  style="margin: 0 auto" :style="getWidth()"><!--:style="getWidth()"-->
       <el-col :xs="24" :sm="24" :md="24" :lg="18">
       </el-col>
       <el-col :xs="24" :sm="24" :md="24" :lg="18">
@@ -64,7 +64,7 @@
     watchQuery: true,
     async asyncData({$axios, redirect,route}) {
       //服务端渲染
-      let pid = route.query.page==undefined? '1':route.query.page;
+      let pid = route.query.page==undefined ? '1':route.query.page;
       console.log(pid)
       let [articles] = await Promise.all([
         await $axios.get('/page?pid='+pid).then(res => {
