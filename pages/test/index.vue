@@ -2,8 +2,8 @@
     <div>
 
       <HeadNew></HeadNew>
-      <el-container  style="margin: 0 auto" :style="getWidth()"><!--:style="getWidth()"-->
-        <el-row  style="margin: 0 auto" :style="getWidth()"><!--:style="getWidth()"-->
+
+        <el-row class="rowWidth" style="margin: 0 auto" ><!--:style="getWidth()"-->
           <el-col :xs="24" :sm="24" :md="24" :lg="18"></el-col>
           <el-col :xs="24" :sm="24" :md="24" :lg="18">
             <div class="articles-area">
@@ -42,7 +42,7 @@
             </div>
             <div class="pagination" >
               <div class="page-list">
-                <nuxt-link :class="{page: true,current: pageNo == 1}" v-for="pageNo in totalPage" :key="pageNo" :to="`jotter?page=${pageNo}`">
+                <nuxt-link :class="{page: true,current: pageNo == 1}" v-for="pageNo in totalPage" :key="pageNo" :to="`test?page=${pageNo}`">
                   {{ pageNo }}
                 </nuxt-link>
               </div>
@@ -52,7 +52,7 @@
             <article-right></article-right>
           </el-col>
         </el-row>
-      </el-container>
+
 
 
 
@@ -63,6 +63,7 @@
 <script>
   import HeadNew from "../../components/HeadNew/HeadNew";
   import ArticleRight from '../../components/Article/ArticleRight'
+  import * as api from "../../api/api";
   export default {
     name: "index",
     components:{
@@ -71,26 +72,18 @@
     watchQuery: true,
     async asyncData({$axios, redirect,route}) {
       //服务端渲染
-      let pid = route.query.page==undefined? '1':route.query.page;
-      console.log(pid)
-      let [articles] = await Promise.all([
-        await $axios.get('/page?pid='+pid).then(res => {
-          return res
-        }).catch(err => {
-
-        })
-      ])
-      if (articles != undefined && articles != []) {
+      let pid = route.query.page==undefined ? '1':route.query.page;
+      return api.getArticleList(pid).then(res=>{
+          return {
+            articles:res.items,
+            total:res.total
+          }
+      }).catch(err=>{
         return {
-          articles: articles.data.items,
-          total: articles.data.total
+          articles:[],
+          total:0
         }
-      } else {
-        return {
-          articles: [],
-          total: 0
-        }
-      }
+      });
     },
     data() {
       return {
@@ -109,6 +102,8 @@
       this.currentPage = window.sessionStorage.getItem('page') == null ? 1 : JSON.parse(window.sessionStorage.getItem('page' || '[]'))
       //可用于设置自适应屏幕，根据获得的可视宽度（兼容性）判断是否显示
       let w = document.documentElement.offsetWidth || document.body.offsetWidth;
+      console.log("执行mounted");
+      console.log("宽度"+w);
       if (w < 1050) {
         //侧边栏不显示
         this.rightShow = false;
@@ -125,9 +120,7 @@
       console.log(this.screenWidth);
     },
     methods: {
-      getWidth() {
-        return {width: this.screenWidth + 'px'}
-      },
+
       handleCurrentChange(page) {
         // this.$router.push({path:'/',params:{pageNo:e}})
         /*var _this = this
@@ -166,6 +159,12 @@
 </style>
 <style scoped>
   @import "../../assets/css/head.css";
+  @media screen and (min-width:1200px){
+    .rowWidth{
+      width: 1200px;
+    }
+  }
+
   .articles-area {
     /*width: auto;
     height: auto;*/

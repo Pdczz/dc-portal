@@ -1,7 +1,7 @@
 <template>
 
-  <el-container  style="margin: 0 auto;" :style="getWidth()"><!--:style="getWidth()"-->
-    <el-row  style="margin: 0 auto" :style="getWidth()"><!--:style="getWidth()"-->
+  <el-container  style="margin: 0 auto;width: 1200px" ><!--:style="getWidth()"-->
+    <el-row  style="margin: 0 auto;width: 1200px"><!--:style="getWidth()"-->
       <el-col :xs="24" :sm="24" :md="24" :lg="18">
       </el-col>
       <el-col :xs="24" :sm="24" :md="24" :lg="18">
@@ -56,6 +56,7 @@
 
 <script>
   import ArticleRight from '../../components/Article/ArticleRight'
+  import * as api from "../../api/api";
 
   export default {
     name: 'Articles',
@@ -65,25 +66,17 @@
     async asyncData({$axios, redirect,route}) {
       //服务端渲染
       let pid = route.query.page==undefined ? '1':route.query.page;
-      console.log(pid)
-      let [articles] = await Promise.all([
-        await $axios.get('/page?pid='+pid).then(res => {
-          return res
-        }).catch(err => {
-
-        })
-      ])
-      if (articles != undefined && articles != []) {
+      return api.getArticleList(pid).then(res=>{
         return {
-          articles: articles.data.items,
-          total: articles.data.total
+          articles:res.items,
+          total:res.total
         }
-      } else {
+      }).catch(err=>{
         return {
-          articles: [],
-          total: 0
+          articles:[],
+          total:0
         }
-      }
+      });
     },
     data() {
       return {
@@ -121,17 +114,6 @@
         return {width: this.screenWidth + 'px'}
       },
       handleCurrentChange(page) {
-        // this.$router.push({path:'/',params:{pageNo:e}})
-        /*var _this = this
-        //document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0
-        window.sessionStorage.setItem('page', page)
-        _this.$axios.get('/article/' + this.pageSize + '/' + page).then(resp => {
-          if (resp && resp.status === 200) {
-            _this.articles = resp.data.items
-            _this.total = resp.data.total
-          }
-        })*/
         this.$router.push({path:'/jotter',query:{page:page}})
       },
       getContent(articleContentMd) {
@@ -292,6 +274,9 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
+
+
+
 
   @media screen and (max-width: 767px) {
     .el-card {
