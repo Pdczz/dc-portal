@@ -73,7 +73,8 @@
     async asyncData({$axios, redirect,route}) {
       //服务端渲染
       let pid = route.query.page==undefined ? '1':route.query.page;
-      return api.getArticleList(pid).then(res=>{
+      let params={pid:pid};
+      return api.getArticleList({params}).then(res=>{
           return {
             articles:res.items,
             total:res.total

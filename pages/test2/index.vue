@@ -13,11 +13,11 @@
      /* let json =  $axios.get('/page?pid='+1).then(res=>{
         console.log(res.data)
       });*/
-     let param={pid:"1"};
-     api.getArticleList2(param).then(res=>{
+     let params={pid:"1"};
+     api.getArticleList2({params}).then(res=>{
        console.log("res1"+res)
      })
-      return api.getArticleList(1).then(res=>{
+      return api.getArticleList({params}).then(res=>{
         if (true){
           return {
             articles:res.items
