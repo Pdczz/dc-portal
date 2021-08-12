@@ -41,38 +41,38 @@
 </template>
 
 <script>
-  import ArticleRight from '../../components/Article/ArticleRight'
+    import ArticleRight from '../../../components/Article/ArticleRight'
 
-  export default {
-    name: "_id",
-    layout: 'blog',
-    components: {ArticleRight},
-    async asyncData({$axios, route}) {
-      //服务端渲染
-      let articles = await $axios('/article?id=' + route.params.id);
-      return {
-        article: articles.data
-      }
-    },
-    data() {
-      return {
-        /*article: []*/
-      }
-    },
-    mounted() {
-      this.loadArticle()
-    },
-    methods: {
-      loadArticle() {
-        var _this = this
-        _this.$axios.get('/article?id=' + this.$route.params.id).then(resp => {
-          if (resp && resp.status === 200) {
-            _this.article = resp.data
-          }
-        })
-      }
+    export default {
+        name: "_id",
+        layout: 'blog',
+        components: {ArticleRight},
+        async asyncData({$axios, route}) {
+            //服务端渲染
+            let articles = await $axios('/article?id=' + route.params.id);
+            return {
+                article: articles.data
+            }
+        },
+        data() {
+            return {
+                /*article: []*/
+            }
+        },
+        mounted() {
+            this.loadArticle()
+        },
+        methods: {
+            loadArticle() {
+                var _this = this
+                _this.$axios.get('/article?id=' + this.$route.params.id).then(resp => {
+                    if (resp && resp.status === 200) {
+                        _this.article = resp.data
+                    }
+                })
+            }
+        }
     }
-  }
 </script>
 
 <style scoped>
@@ -104,5 +104,5 @@
   }
 </style>
 <style scoped>
-  @import "../../assets/css/markdown.css";
+  @import "../../../assets/css/markdown.css";
 </style>

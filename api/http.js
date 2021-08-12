@@ -17,7 +17,11 @@ export default {
   //get请求
   requestGet(url, params = {}) {
     return new Promise((resolve, reject) => {
-      console.log("传的参数是"+params)
+      //params要加大括号在外边axios.get('/user', {
+      //     params: {
+      //       ID: 12345
+      //     }
+      //   })
        axios.get(url, params).then(response => {
         resolve(response.data);
       }).catch(error => {

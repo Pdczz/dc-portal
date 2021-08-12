@@ -14,15 +14,23 @@ export default {
       {hid: 'description', name: 'description', content: ''}
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+      {rel: 'stylesheet' ,href: '/css/normailze.css'},
+      {rel: 'stylesheet' ,href: '/css/uikit.min.css'},
+      {rel: 'stylesheet' ,href: '/css/icons.css'},
+      {rel: 'stylesheet' ,href: '/css/night-mode.css'},
+      {rel: 'stylesheet' ,href: '/css/style.css'}
     ],
-
+    script:[
+      // {src:'https://cdn.bootcdn.net/ajax/libs/uikit/3.2.1/js/uikit.min.js'},
+      {src: '/js/uikit.min.js'}
+    ]
   },
   loading:'./components/loading/loading.vue',
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     'element-ui/lib/theme-chalk/index.css',
-    '~assets/css/normailze.css'
+
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
