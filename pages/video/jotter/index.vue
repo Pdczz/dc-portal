@@ -69,7 +69,7 @@
             </div>
 
             <div v-for="article in articles" :key="article.id">
-              <a href="single-video.html" class="video-post video-post-list">
+              <router-link class="video-post video-post-list" :to="{name:'video-jotter-id',params:{id: article.id}}">
                 <!-- Blog Post Thumbnail -->
                 <div class="video-post-thumbnail">
                   <span class="play-btn-trigger"></span>
@@ -103,7 +103,8 @@
                   </div>
 
                 </div>
-              </a>
+              </router-link>
+
             </div>
             <ul class="uk-pagination my-5 uk-flex-center" uk-margin>
               <nuxt-link :class="{page: true,current: pageNo == 1}" v-for="pageNo in totalPage" :key="pageNo" :to="`jotter?page=${pageNo}`">

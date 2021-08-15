@@ -4,33 +4,39 @@
     <el-row style="width: 1200px;margin: 0 auto; ">
       <el-col style="width: 900px">
         <div class="articles-area">
-          <el-card style="text-align: left" shadow="never" v-if="article">
-            <div style="text-align: left">
-              &nbsp&nbsp<span style="font-size: 20px"><strong>{{article.articleTitle}}</strong></span><br>
-              &nbsp&nbsp<i class="el-icon-date" style="padding-top: 15px;">{{article.articleDate}}</i><br>
-              <div class="markdown-body">
-                <div v-html="article.articleContentHtml"></div>
+          <div v-if="article">
+            <el-card style="text-align: left" shadow="never">
+              <div style="text-align: left">
+                &nbsp&nbsp<span style="font-size: 20px"><strong>{{article.articleTitle}}</strong></span><br>
+                &nbsp&nbsp<i class="el-icon-date" style="padding-top: 15px;">{{article.articleDate}}</i><br>
+                <div class="markdown-body">
+                  <div v-html="article.articleContentHtml"></div>
+                </div>
               </div>
-            </div>
-            <div class="post-copyright">
-              <p>
-                <span>本文标题：</span>{{article.articleTitle}}
-              </p>
-              <p>
-                <span>文章作者：</span>塞万提斯2020
-              </p>
-              <p>
-                <span>发布时间：</span>{{article.articleDate}}
-              </p>
-              <p>
-                <span>最后更新：</span>{{article.articleDate}}
-              </p>
-              <p>
-                <span>版权声明：</span>本博客所有文章除特别声明外，均采用 CC BY-NC-SA 3.0 CN 许可协议。转载请注明出处！
-              </p>
-            </div>
-          </el-card>
-
+              <div class="post-copyright">
+                <p>
+                  <span>本文标题：</span>{{article.articleTitle}}
+                </p>
+                <p>
+                  <span>文章作者：</span>塞万提斯2020
+                </p>
+                <p>
+                  <span>发布时间：</span>{{article.articleDate}}
+                </p>
+                <p>
+                  <span>最后更新：</span>{{article.articleDate}}
+                </p>
+                <p>
+                  <span>版权声明：</span>本博客所有文章除特别声明外，均采用 CC BY-NC-SA 3.0 CN 许可协议。转载请注明出处！
+                </p>
+              </div>
+            </el-card>
+          </div>
+          <div v-else>
+            <el-card style="text-align: left" shadow="never">
+              404,
+            </el-card>
+          </div>
         </div>
       </el-col>
       <el-col style="width: 280px">
@@ -44,12 +50,13 @@
   import ArticleRight from '../../components/Article/ArticleRight'
 
   export default {
-    name: "_id",
+    name: "jotterId",
     layout: 'blog',
     components: {ArticleRight},
     async asyncData({$axios, route}) {
       //服务端渲染
       let articles = await $axios('/article?id=' + route.params.id);
+      console.log("myarticles: "+articles.data)
       return {
         article: articles.data
       }
