@@ -2,69 +2,10 @@
 
         <div class="wrapper">
 
-           <!-- <div class="link">
-              <dl>
-                <dt>
-                  网站相关
-                </dt>
-                <dd>
-                  关于我们
-                </dd>
-                <dd>
-                  服务条款
-                </dd>
-               &lt;!&ndash; <dd>
-                  帮助中心
-                </dd>
-                <dd>
-                  编辑器语法
-                </dd>&ndash;&gt;
-              </dl>
-              <dl>
-                <dt>
-                  常用链接
-                </dt>
-                <dd>
-                  博客园
-                </dd>
-                <dd>
-                  CSDN
-                </dd>
-              </dl>
-              <dl>
-                <dt>
-                  联系我们
-                </dt>
-                <dd>
-                  联系我们
-                </dd>
-                <dd>
-                  加入我们
-                </dd>
-               &lt;!&ndash; <dd>
-                  建议反馈
-                </dd>&ndash;&gt;
-              </dl>
-              <dl>
-                <dt>
-                  关注我们
-                </dt>
-                <dd>
-                  微博
-                </dd>
-                <dd>
-                  twitter
-                </dd>
-              </dl>
-              <div class="xuke">
-                <h3>内容许可</h3>
-                <p style="text-align: left">除特别说明外，用户内容均采用知识共享署名-非商业性使用-禁止演绎4.0 国际许可协议 (CC BY-NC-ND 4.0) 进行许可</p>
 
-              </div>
-            </div>-->
-          <el-backtop>
+          <!--<el-backtop>
             UP
-          </el-backtop>
+          </el-backtop>-->
             <div style="width:auto;margin:0 auto; padding:20px 0;text-align: center;background-color: white">
               <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44060502002334" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
                 <img src="~static/img/beian.png" style="float:left;"/>

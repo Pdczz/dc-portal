@@ -1,57 +1,58 @@
 <template>
-
-  <el-container  style="margin: 0 auto;width: 1200px" ><!--:style="getWidth()"-->
-    <el-row  style="margin: 0 auto;width: 1200px"><!--:style="getWidth()"-->
-      <el-col :xs="24" :sm="24" :md="24" :lg="18">
-      </el-col>
-      <el-col :xs="24" :sm="24" :md="24" :lg="18">
-        <div class="articles-area">
-          <div v-for="article in articles" :key="article.id">
-            <el-card shadow="always" style="border-radius: 10px">
-              <el-row>
-                <el-col :span="8">
-                  <p class="pic">
-                    <img class="img" src="~static/img/tp.png" alt="" style="border-radius: 10px">
-                  </p>
-                </el-col>
-                <el-col :span="1">
-                  <div style="margin: 10px"></div>
-                </el-col>
-                <el-col :span="15">
-                  <div style="float:left;width:100%;height: 200px;margin-top: 11px">
-                    <router-link class="article-link" :to="{name:'jotter-id',params:{id: article.id}}">
+  <div>
+    <el-container style="max-width: 1200px" class="mycontain"><!--:style="getWidth()"-->
+      <el-row  style="margin: 0 auto;max-width: 1200px"><!--:style="getWidth()"-->
+        <el-col :xs="24" :sm="24" :md="24" :lg="18">
+          <div class="articles-area">
+            <div v-for="article in articles" :key="article.id">
+              <el-card shadow="always" style="border-radius: 10px">
+                <el-row >
+                  <el-col :span="8" >
+                    <p class="pic">
+                      <img class="img" :src="article.articleCover" alt="" style="border-radius: 10px">
+                    </p>
+                  </el-col>
+                  <el-col :span="1">
+                    <div style="margin: 10px"></div>
+                  </el-col>
+                  <el-col :span="15">
+                    <div style="float:left;width:100%;height: 200px;margin-top: 11px">
+                      <router-link class="article-link" :to="{name:'jotter-id',params:{id: article.id}}">
                     <span class="post-title">
                       {{article.articleTitle}}
                     </span>
-                    </router-link>
-                    <i class="el-icon-date post-meta"> {{article.articleDate}}</i><br>
-                    <router-link class="article-link " :to="{name:'jotter-id',params:{id: article.id}}">
+                      </router-link>
+                      <i class="el-icon-date post-meta"> {{article.articleDate}}</i><br>
+                      <router-link class="article-link " :to="{name:'jotter-id',params:{id: article.id}}">
                       <span class="post-content">
                         {{article.articleAbstract}}
                       </span>
-                    </router-link>
-                    <router-link class="article-link " :to="{name:'jotter-id',params:{id: article.id}}">
-                      <el-button type="primary" size="mini" round style="float: right"><span>阅读全文>></span></el-button>
-                    </router-link>
-                  </div>
-                </el-col>
-              </el-row>
-            </el-card>
+                      </router-link>
+                      <router-link class="article-link " :to="{name:'jotter-id',params:{id: article.id}}">
+                        <el-button type="primary" size="mini" round style="float: right"><span>阅读全文>></span></el-button>
+                      </router-link>
+                    </div>
+                  </el-col>
+                </el-row>
+              </el-card>
+            </div>
           </div>
-        </div>
-        <div class="pagination" >
-          <div class="page-list">
-            <nuxt-link :class="{page: true,current: pageNo == 1}" v-for="pageNo in totalPage" :key="pageNo" :to="`jotter?page=${pageNo}`">
-              {{ pageNo }}
-            </nuxt-link>
+          <div class="pagination" >
+            <div class="page-list">
+              <nuxt-link :class="{page: true,current: pageNo == 1}" v-for="pageNo in totalPage" :key="pageNo" :to="`jotter?page=${pageNo}`">
+                {{ pageNo }}
+              </nuxt-link>
+            </div>
           </div>
-        </div>
-      </el-col>
-      <el-col :xs="1" :sm="1" :md="1" :lg="6" v-show="rightShow"><!-- style="width: 280px"-->
-        <article-right></article-right>
-      </el-col>
-    </el-row>
-  </el-container>
+        </el-col>
+        <el-col :xs="1" :sm="1" :md="1" :lg="6" ><!-- style="width: 280px"-->
+          <article-right class="rigcss"></article-right>
+        </el-col>
+      </el-row>
+    </el-container>
+
+  </div>
+
 </template>
 
 <script>
@@ -222,7 +223,7 @@
   .pic {
     position: relative;
     width: 100%; /*相当于100px*/
-    padding-top: 50%; /*相当于100px.这是比较关键的一步，margin和padding是相对于其父元素的宽度的100%*/
+    padding-top: 60%; /*相当于100px.这是比较关键的一步，margin和padding是相对于其父元素的宽度的100%*/
   }
 
   .img {
@@ -277,15 +278,24 @@
   }
 
 
-
+  .mycontain{
+    margin: 0 auto;
+    padding-top: 20px;
+  }
 
   @media screen and (max-width: 767px) {
+    .rigcss{
+      display: none;
+    }
+    .mycontain{
+      padding-top: 65px;
+    }
     .el-card {
       height: 180px;
     }
 
     .img {
-      height: 160%;
+      height: 130%;
     }
 
     .post-title {
