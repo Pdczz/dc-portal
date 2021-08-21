@@ -1,14 +1,12 @@
 <template>
-  <div>
-      <h2>Page is not found</h2>
-  </div>
+    <div>页面找不到了</div>
 </template>
 
 <script>
-  export default {
-    name: "error",
-    props:['error']
-  }
+    export default {
+        name: "error",
+        props:['error']
+    }
 </script>
 
 <style scoped>

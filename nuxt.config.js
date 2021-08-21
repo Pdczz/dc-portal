@@ -16,15 +16,14 @@ export default {
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
       {rel: 'stylesheet' ,href: '/css/normailze.css'},
-      {rel: 'stylesheet' ,href: '/css/uikit.min.css'},
+      {rel: 'stylesheet' ,href: '/css/style.css'}
+      /* {rel: 'stylesheet' ,href: '/css/uikit.min.css'},
       {rel: 'stylesheet' ,href: '/css/icons.css'},
-      {rel: 'stylesheet' ,href: '/css/night-mode.css'},
-      {rel: 'stylesheet' ,href: '/css/style.css'},
-      {rel: 'stylesheet' ,href: '/css/markdown.css'}
+      {rel: 'stylesheet' ,href: '/css/night-mode.css'},*/
     ],
     script:[
       // {src:'https://cdn.bootcdn.net/ajax/libs/uikit/3.2.1/js/uikit.min.js'},
-      {src: '/js/uikit.min.js'}
+      // {src: '/js/uikit.min.js'}
     ]
   },
   loading:'./components/loading/loading.vue',
