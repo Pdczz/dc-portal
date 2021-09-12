@@ -155,10 +155,10 @@
 </style>
 <style scoped>
 
-  /*@import "../../assets/css/blog.css";*/
+  /*@import "static/css/blog.css";*/
 </style>
 <style scoped>
-  @import "../../assets/css/head.css";
+  @import "static/css/head.css";
   @media screen and (min-width:1200px){
     .rowWidth{
       width: 1200px;
@@ -301,7 +301,7 @@
     }
 
     .pic {
-
+      display: none;
       height: 100px;
     }
 

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-container style="max-width: 1200px" class="mycontain"><!--:style="getWidth()"-->
-      <el-row  style="margin: 0 auto;max-width: 1200px"><!--:style="getWidth()"-->
+    <el-container style="width: 100%" class="mycontain"><!--:style="getWidth()"-->
+      <el-row  style="margin: 0 auto;width: 100%"><!--:style="getWidth()"-->
         <el-col :xs="24" :sm="24" :md="24" :lg="18">
           <div class="articles-area">
             <div v-for="article in articles" :key="article.id">
@@ -147,12 +147,12 @@
 
 <style scoped>
 
-  .articles-area {
+  /*.articles-area {
     width: auto;
     height: auto;
     margin-left: auto;
     margin-right: auto;
-  }
+  }*/
 
   .article-link {
     text-decoration: none;
@@ -357,6 +357,14 @@
   .page:current{
     background: #fff;
     color: rgb(64,158,255);
+  }
+  @media screen and (min-width: 600px) {
+    .el-container{
+      max-width: 1200px;
+    }
+    .el-row{
+      max-width: 1200px;
+    }
   }
 
 </style>

@@ -1,22 +1,19 @@
 <template>
-
-        <div class="wrapper">
-
-
+        <div >
           <!--<el-backtop>
             UP
           </el-backtop>-->
             <div style="width:auto;margin:0 auto; padding:20px 0;text-align: center;background-color: white">
-              <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44060502002334" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+              <!--<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44060502002334" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
                 <img src="~static/img/beian.png" style="float:left;"/>
                 <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; ">粤公网安备 44060502002334号</p>
-              </a>
-              <a target="_blank" href="https://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
-
-                <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; ">粤ICP备2020128924号</p>
+              </a>-->
+              Copyright © 2020-2021 Pengducheng
+              <br>
+              <a target="_blank" href="https://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:25px;line-height:25px;">
+                粤ICP备2020128924号
               </a>
             </div>
-
 
         </div>
 

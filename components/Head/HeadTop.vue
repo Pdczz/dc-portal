@@ -122,7 +122,7 @@
 <script>
 </script>
 <style scoped>
-  @import "../../assets/css/index.css";
+  @import "static/css/index.css";
   .active {
     color: rgb(250, 150, 0);
     border-bottom-color: rgb(250, 150, 0);
@@ -181,7 +181,7 @@
 </script>
 
 <style scoped>
-  @import "../../assets/css/doc.css";
+  @import "static/css/head.css";
   #bg {
     /* background-image: url(../assets/katongjianpan.png);*/
     /*background-color: #c0ccda;*/

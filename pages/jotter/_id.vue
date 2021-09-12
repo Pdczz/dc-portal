@@ -1,48 +1,7 @@
 <template>
-    <!--<div>
-      <el-container style="max-width: 1200px" class="mycontain">&lt;!&ndash;:style="getWidth()"&ndash;&gt;
-        <el-row style="max-width: 1200px;margin: 0 auto; ">
-          <el-col :xs="24" :sm="24" :md="24" :lg="18">
-            <div class="articles-area">
-              <el-card style="text-align: left" shadow="never" v-if="article">
-                <div style="text-align: left">
-                  &nbsp&nbsp<span style="font-size: 20px"><strong>{{article.articleTitle}}</strong></span><br>
-                  &nbsp&nbsp<i class="el-icon-date" style="padding-top: 15px;">{{article.articleDate}}</i><br>
-                  <div class="markdown-body">
-                    <div v-html="article.articleContentHtml"></div>
-                  </div>
-                </div>
-                <div class="post-copyright">
-                  <p>
-                    <span>本文标题：</span>{{article.articleTitle}}
-                  </p>
-                  <p>
-                    <span>文章作者：</span>塞万提斯2020
-                  </p>
-                  <p>
-                    <span>发布时间：</span>{{article.articleDate}}
-                  </p>
-                  <p>
-                    <span>最后更新：</span>{{article.articleDate}}
-                  </p>
-                  <p>
-                    <span>版权声明：</span>本博客所有文章除特别声明外，均采用 CC BY-NC-SA 3.0 CN 许可协议。转载请注明出处！
-                  </p>
-                </div>
-              </el-card>
-
-            </div>
-          </el-col>
-          <el-col :xs="1" :sm="1" :md="1" :lg="6" >&lt;!&ndash; style="width: 280px"&ndash;&gt;
-            <ArticleRight class="rigcss"></ArticleRight>
-          </el-col>
-        </el-row>
-      </el-container>
-    </div>-->
-
   <div>
-    <el-container style="max-width: 1200px" class="mycontain"><!--:style="getWidth()"-->
-      <el-row  style="margin: 0 auto;max-width: 1200px"><!--:style="getWidth()"-->
+    <el-container style="width: 100%" class="mycontain"><!--:style="getWidth()"-->
+      <el-row  style="margin: 0 auto;width: 100%"><!--:style="getWidth()"-->
         <el-col :xs="24" :sm="24" :md="24" :lg="18">
           <div class="articles-area">
             <el-card style="text-align: left" shadow="never" v-if="article">
@@ -124,6 +83,16 @@
     padding-top: 20px;
   }
 
+  @media screen and (min-width: 600px) {
+    .el-container{
+      max-width: 1200px;
+    }
+    .el-row{
+      max-width: 1200px;
+    }
+  }
+
+
   @media screen and (max-width: 767px) {
     .markdown-body .highlight pre, .markdown-body pre {
       width: 450px;
@@ -166,6 +135,6 @@
   }
 </style>
 <style>
-  /*@import "../../assets/css/markdown.css";*/
+  /*@import "static/css/markdown.css";*/
   @import "../../static/css/markdown.css";
 </style>

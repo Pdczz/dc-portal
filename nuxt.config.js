@@ -10,13 +10,13 @@ export default {
     },
     meta: [
       {charset: 'utf-8'},
-      {name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no'},
       {hid: 'description', name: 'description', content: ''}
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
       {rel: 'stylesheet' ,href: '/css/normailze.css'},
-      {rel: 'stylesheet' ,href: '/css/style.css'}
+      // {rel: 'stylesheet' ,href: '/css/style.css'}
       /* {rel: 'stylesheet' ,href: '/css/uikit.min.css'},
       {rel: 'stylesheet' ,href: '/css/icons.css'},
       {rel: 'stylesheet' ,href: '/css/night-mode.css'},*/

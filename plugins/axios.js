@@ -1,6 +1,6 @@
 export default function ({store, redirect, req, route, $axios,app:{$cookies}})  {
-  $axios.defaults.baseURL = 'http://localhost:9090/api';
-  // $axios.defaults.baseURL = 'http://pdczz.com/api';
+  // $axios.defaults.baseURL = 'http://localhost:9090/api';
+  $axios.defaults.baseURL = 'http://pdczz.com/api';
   $axios.defaults.withCredentials = true;
   $axios.defaults.timeout = 6000
 
