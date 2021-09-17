@@ -299,7 +299,7 @@
     }
 
     .post-title {
-      font-size: 1px;
+      font-size: 10px;
       line-height: 1.3;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -308,13 +308,13 @@
     }
 
     .post-meta {
-      font-size: 1px;
+      font-size: 10px;
       padding-top: 10px;
       padding-bottom: 10px;
     }
 
     .post-content {
-      font-size: 1px;
+      font-size: 10px;
       line-height: 1.6;
     }
 

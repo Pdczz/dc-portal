@@ -31,7 +31,10 @@
               <nuxt-link :to="{name:'history'}">网站导航</nuxt-link>
             </li>
 
-
+            <li class="site-nav-desktop-item site-nav-hover-item" data-site-nav-category="Top Nav">
+              <!--            <a data-site-nav-element="Find Work" href="/jobs">Find Work</a>-->
+              <nuxt-link :to="{name:'video'}">在线视频</nuxt-link>
+            </li>
             <!--
                       <li class="site-nav-desktop-item" data-site-nav-category="Top Nav">
                         <a data-site-nav-element="Go Pro" href="/pro">Go Pro</a>

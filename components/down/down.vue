@@ -8,10 +8,12 @@
                 <img src="~static/img/beian.png" style="float:left;"/>
                 <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; ">粤公网安备 44060502002334号</p>
               </a>-->
-              Copyright © 2020-2021 Pengducheng
+<!--              Copyright © 2020-2021 Pengducheng-->
               <br>
               <a target="_blank" href="https://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:25px;line-height:25px;">
-                粤ICP备2020128924号
+                <span style="color: #5cb6ff">
+                  粤ICP备2020128924号
+                </span>
               </a>
             </div>
 
@@ -29,10 +31,10 @@
 <style scoped>
 
 
-  a{
+  /*a{
     text-decoration: none;
 
-  }
+  }*/
  /* .footer1 {
 
     !*border-top: 1px solid #e6e6e6;*!
