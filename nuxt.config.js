@@ -30,6 +30,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     'element-ui/lib/theme-chalk/index.css',
+    'video.js/dist/video-js.css',
 
   ],
 
@@ -38,7 +39,8 @@ export default {
     {src: '@/plugins/element-ui', ssr: true},
     {src: '~/plugins/router',ssr: false},
     {src: '~plugins/mavon-editor', ssr: false},
-    '@/plugins/axios'
+    '@/plugins/axios',
+    { src: '~/plugins/vue-video.js', ssr: false }
   ],
   axios:{
     proxy:true
@@ -70,8 +72,10 @@ export default {
         '$': 'jquery',
         'jQuery': 'jquery',
         'window.jQuery': 'jquery'
-      })
+      }),
+
     ],
+
     vendor: ['axios','element-ui'],
   },
 }

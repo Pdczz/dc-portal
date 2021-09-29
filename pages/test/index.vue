@@ -158,7 +158,7 @@
   /*@import "static/css/blog.css";*/
 </style>
 <style scoped>
-  @import "static/css/head.css";
+
   @media screen and (min-width:1200px){
     .rowWidth{
       width: 1200px;

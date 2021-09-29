@@ -3,16 +3,19 @@
     <el-container style="width: 100%" class="mycontain">
       <el-row :gutter="40" style="margin: 0 auto;width: 100%;">
         <el-col :xs="24" :sm="12" :md="8">
-          <el-card :body-style="{ padding: '0px' }">
-            <img src="~static/img/img-1.jpg" class="image">
-            <div style="padding: 14px;">
-              <span>好吃的汉堡</span>
-              <div class="bottom clearfix">
-                <time class="time">{{ currentDate }}</time>
-                <el-button type="text" class="button">操作按钮</el-button>
+          <router-link class="article-link" :to="{name:'video-id',params:{id: 1}}">
+            <el-card :body-style="{ padding: '0px' }">
+              <img src="~static/img/img-1.jpg" class="image">
+              <div style="padding: 14px;">
+                <span>好吃的汉堡</span>
+                <div class="bottom clearfix">
+                  <time class="time">{{ currentDate }}</time>
+                  <el-button type="text" class="button">操作按钮</el-button>
+                </div>
               </div>
-            </div>
-          </el-card>
+            </el-card>
+          </router-link>
+
         </el-col>
         <el-col :xs="24" :sm="12" :md="8">
           <el-card :body-style="{ padding: '0px' }">

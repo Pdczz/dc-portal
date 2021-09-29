@@ -16,11 +16,12 @@
     "core-js": "^3.9.1",
     "element-ui": "^2.15.1",
     "highlight.js": "^10.5.0",
-    "jquery": "^3.6.0",
     "mavon-editor": "^2.6.17",
     "nuxt": "^2.15.3",
     "video.js": "^7.11.8",
+    "videojs-contrib-hls": "^5.15.0",
     "vue": "2.6.12",
+    "vue-video-player": "^5.0.2",
     "webpack": "^4.46.0"
   },
   "devDependencies": {
