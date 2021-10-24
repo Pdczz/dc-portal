@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <HeadNew></HeadNew>
     <Nuxt/>
@@ -8,13 +7,12 @@
 </template>
 
 <script>
-    import HeadTop from '../components/Head/HeadTop.vue'
+
     import HeadNew from "../components/HeadNew/HeadNew"
     import down from '../components/down/down.vue'
     export default {
         name: "blog",
         components: {
-            HeadTop,
             down,
             HeadNew
         }

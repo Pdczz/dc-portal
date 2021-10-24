@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container style="width: 100%" class="mycontain"><!--:style="getWidth()"-->
-      <el-row  style="margin: 0 auto;width: 100%"><!--:style="getWidth()"-->
+      <el-row style="margin: 0 auto;width: 100%"><!--:style="getWidth()"-->
         <el-col :xs="24" :sm="24" :md="24" :lg="18">
           <div class="articles-area">
             <el-card style="text-align: left" shadow="never" v-if="article">
@@ -32,7 +32,7 @@
             </el-card>
           </div>
         </el-col>
-        <el-col :xs="1" :sm="1" :md="1" :lg="6" ><!-- style="width: 280px"-->
+        <el-col :xs="1" :sm="1" :md="1" :lg="6"><!-- style="width: 280px"-->
           <article-right class="rigcss"></article-right>
         </el-col>
       </el-row>
@@ -42,52 +42,61 @@
 </template>
 
 <script>
-    import ArticleRight from '../../components/Article/ArticleRight'
+  import ArticleRight from '../../components/Article/ArticleRight'
+  import * as api from "../../api/article";
 
-    export default {
-        name: "jotterId",
-        layout: 'blog',
-        components: {ArticleRight},
-        async asyncData({$axios, route}) {
-            //服务端渲染
-            let articles = await $axios('/article?id=' + route.params.id);
-            return {
-                article: articles.data
-            }
-        },
-        data() {
-            return {
-                rightShow: true,
-                /*article: []*/
-            }
-        },
-        mounted() {
-            this.loadArticle()
-        },
-        methods: {
-            loadArticle() {
-                var _this = this
-                _this.$axios.get('/article?id=' + this.$route.params.id).then(resp => {
-                    if (resp && resp.status === 200) {
-                        _this.article = resp.data
-                    }
-                })
-            }
+  export default {
+    name: "jotterId",
+    components: {ArticleRight},
+    validate({params}){
+      //只能为数字
+      return /^\d+$/.test(params.id)
+    },
+    asyncData({$axios, route,error}) {
+      return api.getArticleById(route.params.id).then(res => {
+        console.log()
+        if (res.status === 200 && res.data != ""){
+          return {article: res.data}
+        }else {
+          error(404,"找不到了")
         }
+      }).catch(err=>{
+        error(500,"服务器内部错误")
+      })
+    },
+    data() {
+      return {
+        rightShow: true,
+      }
+    },
+    mounted() {
+      // this.loadArticle()
+    },
+    methods: {
+      /* loadArticle() {
+           var _this = this
+           _this.$axios.get('/article?id=' + this.$route.params.id).then(resp => {
+               if (resp && resp.status === 200) {
+                   _this.article = resp.data
+               }
+           })
+       }*/
     }
+  }
 </script>
 
 <style scoped>
-  .mycontain{
+  .mycontain {
     margin: 0 auto;
     padding-top: 20px;
   }
 
   @media screen and (min-width: 600px) {
-    .el-container{
+    .el-container {
       max-width: 1200px;
     }
-    .el-row{
+
+    .el-row {
       max-width: 1200px;
     }
   }
@@ -107,6 +116,7 @@
       padding-top: 65px;
     }
   }
+
   .el-card {
     text-align: left;
     margin-bottom: 20px;
@@ -137,4 +147,5 @@
 <style>
   /*@import "static/css/markdown.css";*/
   @import "../../static/css/markdown.css";
+
 </style>

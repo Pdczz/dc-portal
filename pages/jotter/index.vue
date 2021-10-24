@@ -57,31 +57,31 @@
 
 <script>
   import ArticleRight from '../../components/Article/ArticleRight'
-  import * as api from "../../api/api";
+  import * as api from "../../api/article";
 
   export default {
     name: 'Articles',
     components: {ArticleRight},
-    layout:'blog',
     watchQuery: true,
-    async asyncData({$axios, redirect,route}) {
+    asyncData({$axios, redirect,route,error}) {
       //服务端渲染
       let pid = route.query.page==undefined ? '1':route.query.page;
-      let params={pid:pid}
-      return api.getArticleList({params}).then(res=>{
-        return {
-          articles:res.items,
-          total:res.total
+      return api.getArticlesByPage(pid).then(res=>{
+        if (res.status === 200 && res.data.items!=[]){
+          return {
+            articles:res.data.items,
+            total:res.data.total
+          }
+        }else {
+          error(404,"页面找不到")
         }
       }).catch(err=>{
-        return {
-          articles:[],
-          total:0
-        }
-      });
+        error(500,"服务器内部错误")
+      })
     },
     data() {
       return {
+
         pageSize: 7,
         keywords: '',
         currentPage: 1,
@@ -146,13 +146,6 @@
 </style>
 
 <style scoped>
-
-  /*.articles-area {
-    width: auto;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }*/
 
   .article-link {
     text-decoration: none;

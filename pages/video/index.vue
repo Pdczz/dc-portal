@@ -61,13 +61,26 @@
 </template>
 
 <script>
+  import * as api from "../../api/api";
+
   export default {
     name: "index",
-    layout: 'blog',
+    async asyncData({$axios, redirect,route}) {
+      setTimeout(function(){
+
+      }, 30000);
+    },
     data(){
       return{
         currentDate: "2021-09-20T08:17:53.297Z"
       }
+    },
+    mounted() {
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start()
+
+        setTimeout(() => this.$nuxt.$loading.finish(), 5000)
+      })
     }
   }
 </script>

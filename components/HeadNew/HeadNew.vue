@@ -77,9 +77,12 @@
           </li>-->
 
           <li class="js-site-nav-sign-in site-nav-actions-item">
+            <!--<a class="form-sub" data-site-nav-element="Sign in" href="https://github.com/login/oauth/authorize?
+  client_id=fe0755eb905bb2cadfb5&
+  redirect_uri=http://localhost:9090/api/githubToken" @click="dialogVisible=true">Sign in</a>-->
             <a class="form-sub" data-site-nav-element="Sign in" href="https://github.com/login/oauth/authorize?
   client_id=fe0755eb905bb2cadfb5&
-  redirect_uri=http://localhost:9090/api/githubToken" @click="dialogVisible=true">Sign in</a>
+  redirect_uri=http://localhost:8080/test2" @click="dialogVisible=true">Sign in</a>
           </li>
 
           <!--<li class="js-site-nav-sign-up site-nav-actions-item site-nav-desktop-only">

@@ -16,17 +16,13 @@ export default {
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
       {rel: 'stylesheet' ,href: '/css/normailze.css'},
-      // {rel: 'stylesheet' ,href: '/css/style.css'}
-      /* {rel: 'stylesheet' ,href: '/css/uikit.min.css'},
-      {rel: 'stylesheet' ,href: '/css/icons.css'},
-      {rel: 'stylesheet' ,href: '/css/night-mode.css'},*/
+
     ],
     script:[
-      // {src:'https://cdn.bootcdn.net/ajax/libs/uikit/3.2.1/js/uikit.min.js'},
-      // {src: '/js/uikit.min.js'}
+
     ]
   },
-  loading:'./components/loading/loading.vue',
+  loading: '@/components/loading/Loading.vue',
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     'element-ui/lib/theme-chalk/index.css',
@@ -37,9 +33,9 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {src: '@/plugins/element-ui', ssr: true},
-    {src: '~/plugins/router',ssr: false},
+    /*{src: '~/plugins/router',ssr: false},
     {src: '~plugins/mavon-editor', ssr: false},
-    '@/plugins/axios',
+    '@/plugins/axios',*/
     { src: '~/plugins/vue-video.js', ssr: false }
   ],
   axios:{
@@ -60,7 +56,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
    modules: [
-     '@nuxtjs/axios',
+     /*'@nuxtjs/axios',*/
      'cookie-universal-nuxt'
    ],
 

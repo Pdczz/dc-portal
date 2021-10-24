@@ -3,7 +3,7 @@ export default function ({store, redirect, req, route, $axios,app:{$cookies}})  
   // $axios.defaults.baseURL = 'http://pdczz.com/api';
   $axios.defaults.withCredentials = true;
   $axios.defaults.timeout = 6000
-
+  /*测试*/
   //请求拦截
   $axios.onRequest(config => {
     // console.log("请求拦截");

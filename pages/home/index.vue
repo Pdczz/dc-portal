@@ -18,7 +18,6 @@
 
 export default {
   name: 'Appindex',
-  layout:'blog',
 
 }
 

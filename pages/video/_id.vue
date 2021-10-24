@@ -62,7 +62,6 @@
     export default {
         name: "videoId",
         components: {ArticleRight},
-        layout: 'blog',
         data() {
             return {
                 videoUrl:"http://pdczz.com/video/hls/lucene.m3u8",

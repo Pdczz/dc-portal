@@ -16,7 +16,6 @@
 
   export default {
     name: 'Music',
-    layout:'blog',
     data(){
       return{
         items:[
