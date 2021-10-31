@@ -22,21 +22,22 @@ export default {
 
     ]
   },
-  loading: '@/components/loading/Loading.vue',
+  // loading: '@/components/loading/Loading.vue',
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     'element-ui/lib/theme-chalk/index.css',
     'video.js/dist/video-js.css',
 
   ],
-
+  loading: {
+    color: '#0cf',
+    height: '5px'
+  },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {src: '@/plugins/element-ui', ssr: true},
-    /*{src: '~/plugins/router',ssr: false},
-    {src: '~plugins/mavon-editor', ssr: false},
-    '@/plugins/axios',*/
-    { src: '~/plugins/vue-video.js', ssr: false }
+    { src: '~/plugins/vue-video.js', ssr: false },
+    { src: '~/plugins/Nav.js', ssr: false },
   ],
   axios:{
     proxy:true

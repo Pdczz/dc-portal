@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-card shadow="always" style="margin-left: 10px;border-radius: 10px">
+    <el-card shadow="always" style="margin-left: 10px;border-radius: 10px;font-size: 15px">
       <div class="titleforColor">&nbsp文章推荐</div>
 
       <router-link class="article-link" :to="{name:'jotter-id',params:{id: 26}}">

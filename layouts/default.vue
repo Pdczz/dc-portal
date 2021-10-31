@@ -1,20 +1,22 @@
 <template>
   <div>
-    <HeadNew></HeadNew>
+    <Nav></Nav>
     <Nuxt/>
-    <down></down>
+<!--    <down></down>-->
   </div>
 </template>
 
 <script>
 
-  import HeadNew from "../components/HeadNew/HeadNew"
+  // import HeadNew from "../components/HeadNew/HeadNew"
   import down from '../components/down/down.vue'
+  import Nav from "../components/Nav/Nav";
   export default {
     name: "blog",
     components: {
       down,
-      HeadNew
+      // HeadNew,
+      Nav
     }
   }
 </script>

@@ -184,6 +184,7 @@
     font-size: 18px;
     line-height: 1.77;
     text-align: justify;
+    color: #0cf;
     text-justify: distribute;
     word-break: normal;
     overflow: hidden;
@@ -294,6 +295,7 @@
     .post-title {
       font-size: 10px;
       line-height: 1.3;
+      color: #0cf;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -313,6 +315,9 @@
 
     .el-button {
       display: none;
+    }
+    .el-card{
+      margin-bottom: 5px;
     }
   }
 

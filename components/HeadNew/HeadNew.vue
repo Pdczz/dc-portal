@@ -36,7 +36,7 @@
               <nuxt-link :to="{name:'video'}">在线视频</nuxt-link>
             </li>
             <!--
-                      <li class="site-nav-desktop-item" data-site-nav-category="Top Nav">
+                      <li class="site-nav-desktop-item" data-site-nav-category="Top Nav.js">
                         <a data-site-nav-element="Go Pro" href="/pro">Go Pro</a>
                       </li>-->
 
@@ -77,12 +77,8 @@
           </li>-->
 
           <li class="js-site-nav-sign-in site-nav-actions-item">
-            <!--<a class="form-sub" data-site-nav-element="Sign in" href="https://github.com/login/oauth/authorize?
-  client_id=fe0755eb905bb2cadfb5&
-  redirect_uri=http://localhost:9090/api/githubToken" @click="dialogVisible=true">Sign in</a>-->
-            <a class="form-sub" data-site-nav-element="Sign in" href="https://github.com/login/oauth/authorize?
-  client_id=fe0755eb905bb2cadfb5&
-  redirect_uri=http://localhost:8080/test2" @click="dialogVisible=true">Sign in</a>
+            <!--<a class="form-sub" data-site-nav-element="Sign in" href="https://github.com/login/oauth/authorize?client_id=fe0755eb905bb2cadfb5&redirect_uri=http://localhost:9090/api/githubToken" @click="dialogVisible=true">Sign in</a>-->
+            <a class="form-sub" data-site-nav-element="Sign in" href="https://github.com/login/oauth/authorize?client_id=fe0755eb905bb2cadfb5&redirect_uri=http://localhost:8080/test2" @click="dialogVisible=true">Sign in</a>
           </li>
 
           <!--<li class="js-site-nav-sign-up site-nav-actions-item site-nav-desktop-only">
@@ -91,7 +87,87 @@
 
         </ul>
       </div>
+      <div class="site-nav-mobile-menu js-site-nav-mobile-menu">
+        <nav aria-label="primary">
+          <ul>
+            <li>
+              <form class="site-nav-mobile-menu-search" action="/search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" role="img" class="icon site-nav-mobile-search-icon fill-current icon-16">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6002 12.0498C9.49758 12.8568 8.13777 13.3333 6.66667 13.3333C2.98477 13.3333 0 10.3486 0 6.66667C0 2.98477 2.98477 0 6.66667 0C10.3486 0 13.3333 2.98477 13.3333 6.66667C13.3333 8.15637 12.8447 9.53194 12.019 10.6419C12.0265 10.6489 12.0338 10.656 12.0411 10.6633L15.2935 13.9157C15.6841 14.3063 15.6841 14.9394 15.2935 15.33C14.903 15.7205 14.2699 15.7205 13.8793 15.33L10.6269 12.0775C10.6178 12.0684 10.6089 12.0592 10.6002 12.0498ZM11.3333 6.66667C11.3333 9.244 9.244 11.3333 6.66667 11.3333C4.08934 11.3333 2 9.244 2 6.66667C2 4.08934 4.08934 2 6.66667 2C9.244 2 11.3333 4.08934 11.3333 6.66667Z"></path>
+                </svg>
 
+                <input class="site-nav-mobile-search-input" type="search" name="q" placeholder="Search" autocomplete="off" value="HRMS">
+
+              </form>
+            </li>
+
+            <li class="site-nav-mobile-dropdown">
+              <input type="checkbox" name="dropdown" id="inspiration">
+              <label for="inspiration" class="site-nav-mobile-list-item">
+                Inspiration
+              </label>
+              <ul class="site-nav-mobile-dropdown-list">
+                <div class="site-nav-mobile-dropdown-list-container" data-site-nav-category="Inspiration">
+                  <li><a data-site-nav-element="Explore Design Work" href="/shots/popular">Explore Design Work</a></li>
+                  <li>
+                    <a class="flex align-center" data-site-nav-element="New &amp; Noteworthy" href="/shots/recent">
+                      New &amp; Noteworthy
+                    </a>            </li>
+                  <li><a data-site-nav-element="Playoffs" href="/shots?list=playoffs">Playoffs</a></li>
+                  <li><a data-site-nav-element="Blog" href="/stories">Blog</a></li>
+                </div>
+              </ul>
+            </li>
+            <li class="site-nav-mobile-dropdown">
+              <input type="checkbox" name="dropdown" id="find-work">
+              <label for="find-work" class="site-nav-mobile-list-item">
+                Find Work
+              </label>
+              <ul class="site-nav-mobile-dropdown-list">
+                <div class="site-nav-mobile-dropdown-list-container" data-site-nav-category="Find Work">
+                  <li><a data-site-nav-element="Job Board" href="/jobs">Job Board</a></li>
+                  <li>
+                    <a class="flex align-center" data-site-nav-element="Freelance Projects" href="/freelance-jobs">
+                      Freelance Projects
+                      <span class="pro-flag margin-l-8">Pro+</span>
+                    </a>            </li>
+                  <li>
+                    <a class="flex align-center" data-site-nav-element="Projects" href="/projects">
+                      Want freelance design projects?
+                    </a>            </li>
+                </div>
+              </ul>
+            </li>
+            <li data-site-nav-category="Top Nav">
+              <a class="site-nav-mobile-list-item" data-site-nav-element="Learn Design" href="/learn">Learn Design</a>
+            </li>
+            <li data-site-nav-category="Top Nav">
+              <a class="site-nav-mobile-list-item" data-site-nav-element="Go Pro" href="/pro">Go Pro</a>
+            </li>
+
+            <li class="site-nav-mobile-dropdown">
+              <input type="checkbox" name="dropdown" id="hire-designers">
+              <label for="hire-designers" class="site-nav-mobile-list-item">
+                Hire Designers
+              </label>
+              <ul class="site-nav-mobile-dropdown-list">
+                <div class="site-nav-mobile-dropdown-list-container" data-site-nav-category="Hire Designers">
+                  <li><a data-site-nav-element="About Dribbble Hiring" href="/hiring">About Dribbble Hiring</a></li>
+                  <li>
+                    <a class="flex align-center" data-site-nav-element="Designer Search" href="/designers">
+                      Designer Search
+                    </a>            </li>
+                  <li><a data-billing-interval="quarterly" data-site-nav-element="List my job opening" href="/jobs/new">List my Job Opening</a></li>
+                  <li><a data-site-nav-element="Post a Freelance Project" href="/freelance-jobs">Post a Freelance Project</a></li>
+                </div>
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+
+
+      </div>
     </div>
 
   </div>
