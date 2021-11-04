@@ -38,6 +38,7 @@ export default {
     {src: '@/plugins/element-ui', ssr: true},
     { src: '~/plugins/vue-video.js', ssr: false },
     { src: '~/plugins/Nav.js', ssr: false },
+    { src: '~/plugins/commom.js', ssr: false },
   ],
   axios:{
     proxy:true
