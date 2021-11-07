@@ -4,8 +4,8 @@ export function githubLogin (code) {
   return axios.get(`/githubToken?code=${code}`)
 }
 
-export function qqLogin (params) {
-  return axios.post(`/qq-login/`, params)
+export function getuserId (id) {
+  return axios.post(`/oauth/getuserId/${id}`)
 }
 
 export function getUserInfoByToken () {
